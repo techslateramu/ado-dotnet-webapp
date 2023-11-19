@@ -1,0 +1,80 @@
+trigger:
+- main # Adjust the branch as needed
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+jobs:
+- job: CI
+  displayName: 'CI'
+  steps:
+    - task: UseDotNet@2
+      displayName: 'Install .NET SDK'
+      inputs:
+        version: '6.0.x' # Use the version that matches your project
+
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore NuGet packages'
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build the application'
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Run unit tests'
+      inputs:
+        command: 'test'
+        projects: '**/*Tests.csproj'
+        arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage"'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish the application'
+      inputs:
+        command: 'publish'
+        projects: '**/*.csproj'
+        publishWebProjects: true
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/publish'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish artifacts'
+      inputs:
+        artifactName: 'publish'
+        targetPath: '$(Build.ArtifactStagingDirectory)/publish'
+    
+- job: CD
+  displayName: 'CD'
+  dependsOn: CI
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+    - task: UseDotNet@2
+      displayName: 'Install .NET SDK'
+      inputs:
+        version: '6.0.x' # Use the version that matches your project
+
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download artifact'
+      inputs:
+        artifactName: 'publish'
+        downloadPath: '$(System.ArtifactsDirectory)/publish'
+
+    - task: AzureRmWebAppDeployment@4
+      displayName: 'Deploy to Azure Web App'
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: '$(service_connection)'
+        appType: 'webApp'
+        WebAppName: '$(webapp_name)'
+        packageForLinux: '$(System.ArtifactsDirectory)/publish/**/*.zip'
+        enableCustomDeployment: true
+        DeploymentType: 'webDeploy'
