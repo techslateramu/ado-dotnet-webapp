@@ -6,7 +6,7 @@ trigger:
       - main
   paths:
     include:
-      - './terraform/*'    
+      - 'terraform/*'    
       
 pool:
    vmImage: 'ubuntu-latest'

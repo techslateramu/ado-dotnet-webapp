@@ -34,8 +34,8 @@ module "app_service_plan" {
   tags                                        = merge(var.tags, var.specific_tags)
 }
 
-module "linux_web_app" {
-  source                                  = "github.com/techslateramu/terraform-modules//azure/linuxwebapp"
+module "windows_web_app" {
+  source                                  = "github.com/techslateramu/terraform-modules//azure/windowswebapp"
   resource_group_name                     = module.resource_group.name
   location                                = var.location
   environment                             = var.environment

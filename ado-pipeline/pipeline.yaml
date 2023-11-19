@@ -10,7 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  buildConfiguration: 'Release'
+- name: buildConfiguration
+  value: 'Release'
+
+- group: common
 
 jobs:
 - job: CI
@@ -61,6 +64,8 @@ jobs:
   dependsOn: CI
   pool:
     vmImage: 'windows-latest'
+  variables:
+  - group: env-dev
   steps:
     - task: UseDotNet@2
       displayName: 'Install .NET SDK'
@@ -77,9 +82,9 @@ jobs:
       displayName: 'Deploy to Azure Web App'
       inputs:
         ConnectionType: 'AzureRM'
-        azureSubscription: '$(service_connection)'
+        azureSubscription: '$(az_sc_name)'
         appType: 'webApp'
-        WebAppName: '$(webapp_name)'
+        WebAppName: '$(webapp1)'
         packageForLinux: '$(System.ArtifactsDirectory)/publish/**/*.zip'
         enableCustomDeployment: true
         DeploymentType: 'webDeploy'

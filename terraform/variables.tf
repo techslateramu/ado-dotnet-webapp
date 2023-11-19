@@ -18,7 +18,7 @@ variable "location"                                     { default = "uksouth" } 
 
 # app service plan
 variable "asp_sku_size"                                 { default = "S2" }
-variable "asp_os_type"                                  { default = "Linux" }
+variable "asp_os_type"                                  { default = "Windows" }
 
 # key vault
 variable "soft_delete_retention_days"                   { default = "7" }
