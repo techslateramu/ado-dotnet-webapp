@@ -1,0 +1,49 @@
+name: $(Build.DefinitionName)-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - './terraform/*'    
+      
+pool:
+   vmImage: 'ubuntu-latest'
+  
+variables:
+  - group: common
+
+stages:
+- stage: Dev
+  variables:
+  - group: env-dev
+  jobs:
+  - job: Terraform
+    steps:
+    - script: 'terraform -chdir=terraform/ init -input=false -var="ARM_CLIENT_ID=$(ARM_CLIENT_ID)" -var="ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)" -var="ARM_TENANT_ID=$(ARM_TENANT_ID)" -var="ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)" -backend-config="tenant_id=$(tf_state_tenant_id)" -backend-config="subscription_id=$(tf_state_subscription_id)" -backend-config="resource_group_name=$(tf_state_rg_name)" -backend-config="storage_account_name=$(tf_state_st_acc_name)" -backend-config="container_name=$(tf_state_st_cont_name)" -backend-config="key=$(Build.Repository.Name).dev.tfstate" '
+      displayName: 'Terraform Init'
+      env:
+        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+        ARM_TENANT_ID: $(ARM_TENANT_ID)
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+
+    - script: 'terraform -chdir=terraform/ validate'
+      displayName: 'Terraform Validate'
+
+    - script: 'terraform -chdir=terraform/ plan -input=false -out=tfplan -var-file=./env/$(env).tfvars -var="ARM_CLIENT_ID=$(ARM_CLIENT_ID)" -var="ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)" -var="ARM_TENANT_ID=$(ARM_TENANT_ID)" -var="ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)"'
+      displayName: 'Terraform Plan'
+      env:
+        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+        ARM_TENANT_ID: $(ARM_TENANT_ID)
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+    
+    - script: 'terraform -chdir=terraform/ apply -input=false -auto-approve -var-file=./env/$(env).tfvars -var="ARM_CLIENT_ID=$(ARM_CLIENT_ID)" -var="ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)" -var="ARM_TENANT_ID=$(ARM_TENANT_ID)"  -var="ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)"'
+      displayName: 'Terraform Apply'
+      env:
+        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+        ARM_TENANT_ID: $(ARM_TENANT_ID)
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
