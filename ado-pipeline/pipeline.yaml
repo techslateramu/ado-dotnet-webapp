@@ -67,10 +67,6 @@ jobs:
   variables:
   - group: env-dev
   steps:
-    - task: UseDotNet@2
-      displayName: 'Install .NET SDK'
-      inputs:
-        version: '6.0.x' # Use the version that matches your project
 
     - task: DownloadPipelineArtifact@2
       displayName: 'Download artifact'
