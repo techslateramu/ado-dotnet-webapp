@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\container.png",
+      "PackagePath": "staticwebassets\\img\\container.png"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\get-started.svg",
+      "PackagePath": "staticwebassets\\img\\get-started.svg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\icon.png",
+      "PackagePath": "staticwebassets\\img\\icon.png"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\icon.svg",
+      "PackagePath": "staticwebassets\\img\\icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\octocat.png",
+      "PackagePath": "staticwebassets\\img\\octocat.png"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\open-weather.png",
+      "PackagePath": "staticwebassets\\img\\open-weather.png"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\img\\spinner.gif",
+      "PackagePath": "staticwebassets\\img\\spinner.gif"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\js\\monitoring.js",
+      "PackagePath": "staticwebassets\\js\\monitoring.js"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\js\\weather.js",
+      "PackagePath": "staticwebassets\\js\\weather.js"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\js\\weather.jso",
+      "PackagePath": "staticwebassets\\js\\weather.jso"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\open-weather-icons\\css\\open-weather-icons.css",
+      "PackagePath": "staticwebassets\\open-weather-icons\\css\\open-weather-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\HP\\ado-dotnet-webapp\\src\\wwwroot\\open-weather-icons\\fonts\\OpenWeatherIcons.woff2",
+      "PackagePath": "staticwebassets\\open-weather-icons\\fonts\\OpenWeatherIcons.woff2"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.dotnet-demoapp.props",
+      "PackagePath": "build\\dotnet-demoapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.dotnet-demoapp.props",
+      "PackagePath": "buildMultiTargeting\\dotnet-demoapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.dotnet-demoapp.props",
+      "PackagePath": "buildTransitive\\dotnet-demoapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.dotnet-demoapp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
