@@ -1,3 +1,11 @@
+
+![TechSlate](img/ts.png)
+
+# <span style="color: lightgreen;">**Executing an CI/CD Pipeline for running a Dotnet web Application Locally.**</span>
+
+
+# <span style="color: lightpink;">Introduction
+
 # .NET - Demo Web Application
 
 This is a simple .NET web app using the new minimal hosting model, and Razor pages. It was created from the `dotnet new webapp` template and modified adding custom APIs, Bootstrap v5, Microsoft Identity and other packages/features.
@@ -14,13 +22,173 @@ The app has been designed with cloud native demos & containers in mind, in order
 ![screen](https://user-images.githubusercontent.com/14982936/71717448-0bc47400-2e10-11ea-8bf0-5115d4c8c4a4.png)
 ![screen](https://user-images.githubusercontent.com/14982936/71717426-fea78500-2e0f-11ea-881f-ad9bd8adbfae.png)
 
-# Status
+<br>
 
-![](https://img.shields.io/github/last-commit/benc-uk/dotnet-demoapp) ![](https://img.shields.io/github/release-date/benc-uk/dotnet-demoapp) ![](https://img.shields.io/github/v/release/benc-uk/dotnet-demoapp) ![](https://img.shields.io/github/commit-activity/y/benc-uk/dotnet-demoapp)
+</br>
 
-Live instances:
+# <span style="color: lightgreen;">Running and Testing Locally
 
-[![](https://img.shields.io/website?label=Hosted%3A%20Kubernetes&up_message=online&url=https%3A%2F%2Fdotnet-demoapp.kube.benco.io%2F)](https://dotnet-demoapp.kube.benco.io/)
+# <span style="color: lightpink;">Pre-requisites
+ - **Be using Linux, WSL or MacOS, with bash, make etc .**
+- [.NET 6](https://docs.microsoft.com/en-us/dotnet/core/install/linux) - for running locally, linting, running tests etc
+- **Clone the project to any directory where you do development work .**
+
+# <span style="color: lightpink;">Folder Structure
+- Modules - which contains modules of terraform
+- Pipeline - this folder contains pipeline
+- Terraform - this folder contains actual terraform project files ( main.tf, var.tf, provider.tf, backend.tf)
+
+# <span style="color: lightpink;">Process
+
+### 1. **First step to begin with , Open your VS CODE and do ``clone`` the repository .**
+
+ ![Calc](./img/git-clone.png)
+
+### 2. **Refer to the script properly and understand the process and steps.**
+
+ ![Calc](./img/csproj.png) 
+
+### 3. **As we are running Locally , Lets first check the ``dotnet version``** . If you haven't installed yet , Follow the link and install it. https://learn.microsoft.com/en-us/dotnet/core/install/
+
+     dotnet --version
+ ![Calc](./img/version.png)   
+
+### 4. **Now get into the ``src`` folder and Run the following command :**
+
+     dotnet run
+
+![Calc](./img/run.png)
+
+### 5. Now follow the localhost link and see whether the Dotnet application is running .
+
+![Calc](./img/local.png)
+
+
+### 6. The .Net Web Application is running successfully .
+
+![Calc](./img/dotnet.png)
+
+### 7. Now lets try to make some changes in html file and try to build it again . Lets add ``Techslate`` word to the display name.
+
+![Calc](./img/html.png)
+
+### 8. Now lets run the following command to build the application .
+
+     dotnet build
+
+![Calc](./img/build.png)
+
+### 9. Once Build is done , we need to execute the file. As we are already in ``src`` folder copy that path after ``src`` .
+
+![Calc](./img/EXEC.png)
+
+***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Running and Testing Locally
 
